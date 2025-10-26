@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Advising Consultants - Personalized Academic Planning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --plum: #6a1b9a;
+            --plum-light: #8e24aa;
+            --plum-dark: #4a0072;
+            --silver: #f5f5f7;
+            --silver-dark: #e0e0e0;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--plum);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--plum);
+        }
+
+        .nav-cta {
+            background-color: var(--silver);
+            color: var(--plum) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--plum);
+            color: var(--white) !important;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(106, 27, 154, 0.8), rgba(106, 27, 154, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--plum);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--plum-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--plum);
+        }
+
+        /* Value Proposition */
+        .value-prop {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--plum);
+        }
+
+        .value-items {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .value-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--plum);
+        }
+
+        .value-item h3 {
+            color: var(--plum);
+            margin-bottom: 0.5rem;
+        }
+
+        /* How We Help */
+        .how-we-help {
+            padding: 4rem 0;
+            background-color: var(--silver);
+        }
+
+        .help-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .help-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .help-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .help-content {
+            flex: 1;
+        }
+
+        .help-content h2 {
+            color: var(--plum);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .help-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .help-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .help-list li:before {
+            content: "•";
+            color: var(--plum);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--plum);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 {
+            color: var(--plum);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pilot Program */
+        .pilot-program {
+            padding: 4rem 0;
+            background-color: var(--plum);
+            color: var(--white);
+        }
+
+        .pilot-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .pilot-content {
+            flex: 1;
+        }
+
+        .pilot-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pilot-badge {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--plum);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .pilot-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pilot-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--plum);
+        }
+
+        .btn-white:hover {
+            background-color: var(--silver);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--silver);
+        }
+
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--silver-dark);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--plum);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--plum);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .help-container, .pilot-container {
+                flex-direction: column;
+            }
+            
+            .help-image, .pilot-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 80%;
+                height: calc(100vh - 70px);
+                transition: 0.3s;
+                box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">College Advising Consultants</a>
+                <div class="hamburger">☰</div>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="nav-cta">Book Free Advising</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Personalized College Advising – 100% Free</h1>
+                <p>Expert guidance to help you plan the perfect schedule, graduate on time, and save money along the way.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Get Started Free</a>
+                    <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Success, Our Approach</h2>
+            </div>
+            <div class="value-items">
+                <div class="value-item">
+                    <div class="value-icon">🎓</div>
+                    <h3>Personalized Plans</h3>
+                    <p>Customized schedule planning tailored to your unique interests and career goals.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🧩</div>
+                    <h3>Balance & Strategy</h3>
+                    <p>Create a balanced course load that maximizes learning without burnout.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <h3>Smart Use of Credits & Aid</h3>
+                    <p>Align your schedule with financial aid requirements to maximize value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Help -->
+    <section class="how-we-help" id="about">
+        <div class="container">
+            <div class="help-container">
+                <div class="help-content">
+                    <h2>We help you design a degree path that fits the real you</h2>
+                    <ul class="help-list">
+                        <li>Schedule planning tailored to your interests</li>
+                        <li>Transparent degree progress guidance</li>
+                        <li>Support when changing majors or minors</li>
+                        <li>Financial aid alignment</li>
+                        <li>Real ongoing advising, not a rushed 30-minute appointment</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Your Free Plan</a>
+                </div>
+                <div class="help-image">
+                    <!-- This would be an actual image in production -->
+                    <div style="width:100%; height:300px; background-color:#e0e0e0; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Student studying image
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Your Personalized Plan in 4 Easy Steps</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Book a session</h3>
+                    <p>Schedule your free consultation at your convenience.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Share your goals</h3>
+                    <p>Provide your academic history and future aspirations.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get your plan</h3>
+                    <p>Receive your customized academic roadmap.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Thrive each semester</h3>
+                    <p>Adjust and optimize your path as needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilot Program -->
+    <section class="pilot-program">
+        <div class="container">
+            <div class="pilot-container">
+                <div class="pilot-content">
+                    <h2>Help Us Grow — While We Help You Succeed</h2>
+                    <p>Our company is currently in development, and we're looking for motivated students who want free expert advising while helping us build experience, testimonials, and best-practices along the way.</p>
+                    <p>You get personalized schedule planning and degree support — we get smarter and stronger as a team.</p>
+                    <a href="#" class="btn btn-white">Become a Pilot Program Student (Free)</a>
+                    <div class="pilot-badge">💡 Limited enrollment — build your future and ours</div>
+                </div>
+                <div class="pilot-image">
+                    <!-- This would be an actual image in production -->
+                    <div style="width:100%; height:300px; background-color:#e0e0e0; display:flex; align-items:center; justify-content:center; color:#666;">
+                        Confident student image
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories Coming Soon</h2>
+                <p>Be one of our first success stories.</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">?</div>
+                    <p class="testimonial-text">Future testimonial from a satisfied student.</p>
+                    <div class="testimonial-author">Future Student</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">?</div>
+                    <p class="testimonial-text">Future testimonial about our scheduling expertise.</p>
+                    <div class="testimonial-author">Future Student</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">?</div>
+                    <p class="testimonial-text">Future testimonial about financial aid guidance.</p>
+                    <div class="testimonial-author">Future Student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">College Advising Consultants</div>
+                    <p>Personalized Academic Planning for Your College Journey</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:CollegeAdvisingConsultants@gmail.com">CollegeAdvisingConsultants@gmail.com</a>
+                    <a href="#">Book Free Advising</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 College Advising Consultants. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
